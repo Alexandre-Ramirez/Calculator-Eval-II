@@ -7,12 +7,17 @@ class MathFun:
         ope2 = math_request.get_ope2()
 
         match operator:
+
             case 'max':
-                raise NotImplementedError
+                if ope1 == ope2:
+                    raise EqualityException(ope1)
+                return max(ope1, ope2)
+
             case 'is_sum_even':
-                raise NotImplementedError
+                return (ope1 + ope2) % 2 == 0
+
             case _:
-                raise NotImplementedError
+                raise FunOperatorNotSupportedException(operator)
 
 class MathFunException(Exception):
     pass
